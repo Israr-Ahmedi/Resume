@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Israr Shaikh | Portfolio</title>
+  <meta name="description" content="Portfolio of Israr Shaikh – Frontend & PHP developer from Ahmedabad. Skills: HTML, CSS, JavaScript, PHP, C. Projects, skills, and contact details."/>
+  <meta name="theme-color" content="#0f172a"/>
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Israr Shaikh | Portfolio" />
+  <meta property="og:description" content="Frontend & PHP developer from Ahmedabad. Skills: HTML, CSS, JavaScript, PHP, C." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0b1020;          /* page background (dark slate) */
+      --panel:#11182c;       /* card background */
+      --muted:#9aa3b2;       /* secondary text */
+      --text:#e6eefc;        /* primary text */
+      --brand:#4f8cff;       /* accent */
+      --brand-2:#22d3ee;     /* secondary accent */
+      --ring: rgba(79,140,255,.65);
+      --radius: 18px;
+      --shadow: 0 10px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, 'Helvetica Neue', Arial, 'Apple Color Emoji','Segoe UI Emoji';
+      color:var(--text); background: radial-gradient(1200px 600px at 70% -10%, rgba(79,140,255,.15), transparent 60%) , var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1100px; margin:auto; padding:28px 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:30; backdrop-filter: blur(10px); background: linear-gradient(to bottom, rgba(11,16,32,.9), rgba(11,16,32,.5)); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.4px}
+    .brand-badge{width:34px; height:34px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:0 6px 22px rgba(79,140,255,.35)}
+    .brand-badge svg{filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));}
+    nav ul{display:flex; gap:18px; list-style:none; padding:0; margin:0}
+    nav a{padding:10px 12px; border-radius:10px; color:var(--muted)}
+    nav a:hover, nav a:focus{color:var(--text); background:rgba(255,255,255,.06)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:var(--text); box-shadow: var(--shadow);}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:none}
+    .btn:hover{transform: translateY(-1px); transition:.15s}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center; padding:58px 0}
+    .hero .title{font-size: clamp(32px, 5vw, 52px); line-height:1.1; margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(79,140,255,.12); border:1px solid rgba(79,140,255,.35); margin:6px 6px 0 0}
+
+    /* Section */
+    section{padding:28px 0 10px}
+    .section-title{font-size: clamp(22px, 3vw, 28px); margin:0 0 14px}
+    .grid{display:grid; gap:16px}
+
+    /* About */
+    .about{display:grid; grid-template-columns: .8fr 1.2fr; gap:24px}
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+
+    /* Skills */
+    .skills{display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:12px}
+    .skill{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:14px; text-align:center}
+    .skill b{display:block; margin-top:6px}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px}
+    .project{position:relative; overflow:hidden}
+    .project .cover{height:160px; border-radius:12px; background:linear-gradient(135deg, rgba(79,140,255,.25), rgba(34,211,238,.2)); display:grid; place-items:center; border:1px solid rgba(255,255,255,.1)}
+    .project h3{margin:10px 0 6px}
+    .project .tags{display:flex; flex-wrap:wrap; gap:8px}
+    .tag{padding:4px 10px; border-radius:999px; font-size:12px; color:var(--muted); border:1px solid rgba(255,255,255,.14)}
+    .actions{display:flex; gap:10px; margin-top:10px}
+
+    /* Contact */
+    .contact-grid{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    .field{display:grid; gap:6px}
+    input, textarea{background:#0d1428; color:var(--text); border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:12px 14px; outline:none}
+    input:focus, textarea:focus{border-color:var(--ring); box-shadow:0 0 0 3px rgba(79,140,255,.25)}
+    textarea{min-height:120px; resize:vertical}
+
+    /* Footer */
+    footer{padding:28px 0 50px; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; padding:40px 0}
+      .about{grid-template-columns: 1fr}
+      .skills{grid-template-columns: repeat(3, 1fr)}
+      .projects{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+    }
+  </style>
+  <script>
+    // Smooth scroll for internal links
+    addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href');
+          if(id && id !== '#'){
+            const el = document.querySelector(id);
+            if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Israr Shaikh",
+    "address": {"@type":"PostalAddress", "addressLocality":"Ahmedabad", "addressCountry":"IN"},
+    "email":"mailto:nawaabkhan302@gmail.com",
+    "telephone":"+919687983319",
+    "jobTitle":"Web Developer",
+    "knowsAbout":["HTML","CSS","JavaScript","PHP","C"],
+    "url":"https://example.com/israr-portfolio"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true">
+          <!-- IS monogram -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h8M4 12h7M4 17h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M14 7c2-2 6-2 6 1 0 3-6 2-6 5s6 2 6 0" stroke="#001122" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Israr Shaikh</span>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn" href="tel:+919687983319">Call</a>
+        <a class="btn btn-primary" href="#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <p class="chip" aria-label="Location">📍 Ahmedabad, India</p>
+        <h1 class="title">Hello, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Israr Shaikh</span>.</h1>
+        <p class="muted" style="font-size:1.1rem">Frontend & PHP Developer crafting clean, fast and accessible websites using <b>HTML</b>, <b>CSS</b>, <b>JavaScript</b>, <b>PHP</b> and <b>C</b>.</p>
+        <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="mailto:nawaabkhan302@gmail.com?subject=Project%20for%20Israr">Email Me</a>
+          <a class="btn" href="#contact" title="Send a message">Contact</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <!-- Simple illustrative preview of a website layout -->
+        <div style="background:#0d1428; border:1px solid rgba(255,255,255,.08); height:260px; border-radius:14px; padding:14px; display:grid; grid-template-rows:40px 1fr; gap:12px">
+          <div style="display:flex; gap:8px">
+            <span style="width:12px;height:12px;border-radius:999px;background:#ef4444"></span>
+            <span style="width:12px;height:12px;border-radius:999px;background:#f59e0b"></span>
+            <span style="width:12px;height:12px;border-radius:999px;background:#22c55e"></span>
+          </div>
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px">
+            <div style="background:linear-gradient(135deg, rgba(79,140,255,.25), rgba(34,211,238,.2)); border-radius:10px"></div>
+            <div style="display:grid; gap:10px">
+              <div style="height:16px; background:rgba(255,255,255,.08); border-radius:6px"></div>
+              <div style="height:16px; background:rgba(255,255,255,.08); border-radius:6px"></div>
+              <div style="height:16px; background:rgba(255,255,255,.08); border-radius:6px"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">PHP</span>
+          <span class="chip">C</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="about">
+        <div class="card">
+          <p>I'm a self‑driven developer who enjoys turning ideas into working products. I focus on clean UI, performance and readable code. When I'm not building, I'm learning new things in web tech and C programming fundamentals.</p>
+          <ul>
+            <li><b>Name:</b> Israr Shaikh</li>
+            <li><b>Location:</b> Ahmedabad, India</li>
+            <li><b>Email:</b> <a href="mailto:nawaabkhan302@gmail.com">nawaabkhan302@gmail.com</a></li>
+            <li><b>Phone:</b> <a href="tel:+919687983319">+91 96879 83319</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Services</h3>
+          <ul style="margin:0; padding-left:18px">
+            <li>Responsive Website Development</li>
+            <li>Landing Pages & Business Sites</li>
+            <li>PHP & MySQL CRUD apps</li>
+            <li>Fixing UI, bugs and performance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills">
+        <div class="skill"><span>🧱</span><b>HTML</b><small class="muted">Semantic, SEO</small></div>
+        <div class="skill"><span>🎨</span><b>CSS</b><small class="muted">Flexbox, Grid</small></div>
+        <div class="skill"><span>⚡</span><b>JavaScript</b><small class="muted">DOM, Fetch</small></div>
+        <div class="skill"><span>🐘</span><b>PHP</b><small class="muted">CRUD, Forms</small></div>
+        <div class="skill"><span>💻</span><b>C</b><small class="muted">Data structures</small></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects">
+        <!-- Project 1 -->
+        <article class="card project">
+          <div class="cover" role="img" aria-label="Voting System UI preview">
+            <span style="font-weight:700; font-size:1.1rem">🗳️ Voting System</span>
+          </div>
+          <h3>Secure Voting System</h3>
+          <p class="muted">PHP + MySQL app with user roles (admin/voter), candidate management, one‑vote per user, and live results.</p>
+          <div class="tags">
+            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href= "http://localhost/project/" title="Demo link placeholder">Live Demo</a>
+            <a class="btn btn-primary" href="#" title="GitHub link placeholder">Source</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card project">
+          <div class="cover" role="img" aria-label="Blog System UI preview">
+            <span style="font-weight:700; font-size:1.1rem">📝 Blog System</span>
+          </div>
+          <h3>Simple Blog CMS</h3>
+          <p class="muted">Create, edit and delete posts, image upload, categories and search. Clean admin dashboard with auth.</p>
+          <div class="tags">
+            <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">CRUD</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Live Demo</a>
+            <a class="btn btn-primary" href="#">Source</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card project">
+          <div class="cover" role="img" aria-label="To‑Do App preview">
+            <span style="font-weight:700; font-size:1.1rem">✅ To‑Do App</span>
+          </div>
+          <h3>To‑Do List (No Backend)</h3>
+          <p class="muted">Vanilla JS app storing tasks in LocalStorage with filters, drag to reorder and quick keyboard shortcuts.</p>
+          <div class="tags">
+            <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#">Live Demo</a>
+            <a class="btn btn-primary" href="#">Source</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card">
+        <div class="contact-grid">
+         <form  method="POST" action="contact.php">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" name="name" required placeholder="Your name" />
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required placeholder="your@email.com" />
+  </div>
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+  </div>
+  <br><button class="btn btn-primary" type="submit">Send Message</button>
+</form>
+
+          <div>
+            <div style="display:grid; gap:8px">
+              <div class="chip">📍 Ahmedabad</div>
+              <div class="chip">✉️ nawaabkhan302@gmail.com</div>
+              <div class="chip">📞 +91 96879 83319</div>
+            </div>
+            <p class="muted" style="margin-top:10px">Available for freelance and full‑time roles.</p>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">© <span id="year"></span> Israr Shaikh</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>Built with HTML, CSS and JavaScript.</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+  OPTIONAL: Simple PHP mail handler (save as contact.php on your server)
+  --------------------------------------------------------------
+  <?php
+    // if($_SERVER['REQUEST_METHOD']==='POST'){
+    //   $name = htmlspecialchars($_POST['name'] ?? '');
+    //   $email = htmlspecialchars($_POST['email'] ?? '');
+    //   $message = htmlspecialchars($_POST['message'] ?? '');
+    //   $to = 'nawaabkhan302@gmail.com';
+    //   $subject = 'Portfolio Inquiry from ' . $name;
+    //   $headers = 'From: ' . $email . "\r\n" . 'Reply-To: ' . $email;
+    //   if(mail($to, $subject, $message, $headers)){
+    //     echo 'Thanks! Your message was sent.';
+    //   } else {
+    //     echo 'Error sending email. Please try again.';
+    //   }
+    //   exit;
+    // }
+  ?>
+  
+  To use the PHP handler:
+  1) Un‑comment the PHP block and host on a PHP server.
+  2) Change the form to: <form method="post" action="contact.php"> with proper input names.
+  -->
+</body>
+</html>
